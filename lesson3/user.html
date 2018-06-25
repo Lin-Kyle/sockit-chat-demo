@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="../bootstrap.min.css">
+  <style media="screen">
+    html,
+    body {
+      height: 100%;
+    }
+
+    .submitWrappre {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 1px solid #999;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="list-group">
+    <a class="list-group-item list-group-item-action flex-column align-items-start active">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">Me</h5>
+        <small>3 days ago</small>
+      </div>
+      <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+    </a>
+    <a class="list-group-item list-group-item-action flex-column align-items-start">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">Other</h5>
+        <small class="text-muted">3 days ago</small>
+      </div>
+      <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+    </a>
+  </div>
+  <form class="submitWrappre">
+    <div class="form-group">
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+      <button type="button" class="btn btn-primary btn-sm" style="float:right" id="send">Small button</button>
+    </div>
+  </form>
+  <script src="../bootstrap.min.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    var socket = io('http://localhost'),
+      $content = document.getElementById('exampleFormControlTextarea1'),
+      $send = document.getElementById('send');
+      
+    $send.onclick = function() {
+      socket.emit('user_send', {
+        content: $content.value
+      });
+      $content.value = '';
+    }
+
+    /**
+     * [addMsg description]
+     * @param {[bol]} identity [身份,1本人,0非本人]
+     * @param {[type]} val      [description]
+     */
+    function addMsg(identity, val) {
+      var node = document.createElement("a"),
+        str =
+        `<a class="list-group-item list-group-item-action flex-column align-items-start ${identity ? 'active' : ''}">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">${identity ? 'Me' : 'Other'}</h5>
+            <small class="text-muted">${new Date().toLocaleString()}</small>
+        </div>
+        <p class="mb-1">${val}</p>
+    </a>`;
+      node.innerHTML = str;
+      $list.appendChild(node);
+    }
+  </script>
+</body>
+
+</html>

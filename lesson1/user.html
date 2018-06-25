@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="../bootstrap.min.css">
+    <style media="screen">
+        html,
+        body {
+            height: 100%;
+        }
+
+        .submitWrappre {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 1px solid #999;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="list-group">
+        <a class="list-group-item list-group-item-action flex-column align-items-start active">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">List group item heading</h5>
+                <small>3 days ago</small>
+            </div>
+            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+            <small>Donec id elit non mi porta.</small>
+        </a>
+        <a class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">List group item heading</h5>
+                <small class="text-muted">3 days ago</small>
+            </div>
+            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+            <small class="text-muted">Donec id elit non mi porta.</small>
+        </a>
+    </div>
+    <form class="submitWrappre">
+        <div class="form-group">
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+            <button type="button" class="btn btn-primary btn-sm" style="float:right">Small button</button>
+        </div>
+    </form>
+</body>
+
+</html>
